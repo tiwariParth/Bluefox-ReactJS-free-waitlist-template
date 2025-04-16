@@ -63,7 +63,7 @@ function App() {
     }
   
     try {
-      const url = `https://api.bluefox.email/v1/subscriber-lists/67fcf6efda07577ccf8ed377`;
+      const url = `https://api.bluefox.email/v1/subscriber-lists/${import.meta.env.VITE_SUBLIST_ID}`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
