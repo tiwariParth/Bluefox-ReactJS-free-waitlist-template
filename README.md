@@ -1,4 +1,4 @@
-# Waitlist Example with BlueFox Email Integration
+# Free Waitlist Template with Free BlueFox Email Integration
 
 This project is a modern, responsive waitlist signup page built with React and Vite that integrates with BlueFox Email API for subscriber list management. It features a clean, user-friendly interface with form validation, notifications, and smooth animations.
 
@@ -6,11 +6,14 @@ This project is a modern, responsive waitlist signup page built with React and V
 
 ## Features
 
+- **Free credits**: With Bluefox email get monthly 3000 free credits for a year
+- **AWS SES**: Setup AWS SES with monthly 3000 free sends for a year
 - **Sleek UI with Dark Theme**: Modern interface with gradient effects and responsive design
 - **Form Validation**: Client-side validation for user inputs
 - **BlueFox Email Integration**: Seamless connection to BlueFox Email API for managing subscribers
 - **Animated Notifications**: Toast notifications with progress bars for user feedback
 - **GitHub Pages Deployment**: Automatic deployment via GitHub Actions
+
 
 ## Tech Stack
 
