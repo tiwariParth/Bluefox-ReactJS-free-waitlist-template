@@ -1,19 +1,36 @@
-import { useState, useRef } from 'react'
-import ReCAPTCHA from 'react-google-recaptcha'
+import { useState, useEffect } from 'react'
 import BluefoxLogo from './assets/bluefox-logo.png'
 
 export default function App() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    reason: ''
+    reason: '',
+    captchaText: ''
   })
   
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
   const [notification, setNotification] = useState(null)
-  const [captchaToken, setCaptchaToken] = useState(null)
-  const recaptchaRef = useRef(null)
+  const [captchaProbe, setCaptchaProbe] = useState('')
+  const [captchaHtml, setCaptchaHtml] = useState('')
+  
+  useEffect(() => {
+    generateCaptcha()
+  }, [])
+  
+  const generateCaptcha = () => {
+    fetch("https://api.bluefox.email/v1/captcha")
+      .then(response => response.json()) 
+      .then(captchaData => {
+        setCaptchaHtml(captchaData.result.data)
+        setCaptchaProbe(captchaData.result.probe)
+      })
+      .catch(error => {
+        console.error("Error fetching CAPTCHA:", error)
+        setCaptchaHtml(`<p>Error loading captcha: ${error.message}</p>`)
+      })
+  }
   
   const validateForm = () => {
     const newErrors = {}
@@ -28,24 +45,12 @@ export default function App() {
       newErrors.email = 'Email is invalid'
     }
     
-    if (!captchaToken) {
-      newErrors.recaptcha = 'Please verify you are not a robot'
+    if (!formData.captchaText.trim()) {
+      newErrors.captcha = 'Please enter the captcha text'
     }
     
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
-  }
-  
-  const handleCaptchaChange = (token) => {
-    setCaptchaToken(token)
-    // Clear recaptcha error if it exists
-    if (errors.recaptcha) {
-      setErrors(prev => {
-        const newErrors = {...prev}
-        delete newErrors.recaptcha
-        return newErrors
-      })
-    }
   }
   
   const handleChange = (e) => {
@@ -101,7 +106,8 @@ export default function App() {
           custom_fields: {
             reason: formData.reason || 'Not specified'
           },
-          recaptcha_token: captchaToken
+          captchaText: formData.captchaText,
+          captchaProbe: captchaProbe
         })
       })
       
@@ -117,17 +123,17 @@ export default function App() {
       setFormData({
         name: '',
         email: '',
-        reason: ''
+        reason: '',
+        captchaText: ''
       })
       
-      // Reset reCAPTCHA
-      if (recaptchaRef.current) {
-        recaptchaRef.current.reset()
-        setCaptchaToken(null)
-      }
+      // Generate new captcha
+      generateCaptcha()
     } catch (error) {
       console.error('Submission error:', error)
       showNotification('error', error.message || 'Failed to join waitlist. Please try again.')
+      // Generate new captcha on error
+      generateCaptcha()
     } finally {
       setLoading(false)
     }
@@ -188,13 +194,31 @@ export default function App() {
             />
           </div>
           
-          <div className="form-group recaptcha-container">
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
-              onChange={handleCaptchaChange}
+          <div className="form-group captcha-group">
+            <label className="form-label">Verify you're human</label>
+            <div className="captcha-container">
+              <div className="captcha-display" dangerouslySetInnerHTML={{ __html: captchaHtml }}></div>
+              <button 
+                type="button" 
+                className="refresh-captcha" 
+                onClick={generateCaptcha}
+                aria-label="Refresh captcha"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 3V8M21 8H16M21 8L18 5.29168C16.4077 3.86656 14.3051 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.2832 21 19.8675 18.008 20.777 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </div>
+            <input
+              type="text"
+              id="captchaText"
+              name="captchaText"
+              className="form-input"
+              placeholder="Enter captcha text"
+              value={formData.captchaText}
+              onChange={handleChange}
             />
-            {errors.recaptcha && <p className="error-text">{errors.recaptcha}</p>}
+            {errors.captcha && <p className="error-text">{errors.captcha}</p>}
           </div>
           
           <button 
