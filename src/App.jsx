@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
-import BluefoxLogo from './assets/bluefox-logo.svg'
+import BluefoxLogo from './assets/bluefox-logo.png'
 
 export default function App() {
   const [formData, setFormData] = useState({
