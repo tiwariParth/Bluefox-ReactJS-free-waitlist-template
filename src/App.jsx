@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import BluefoxLogo from './assets/react.svg'
+import BluefoxLogo from './assets/logo-glowing.png'
 
 export default function App() {
   const [formData, setFormData] = useState({
