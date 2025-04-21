@@ -1,7 +1,11 @@
 # BlueFox React Waitlist Template
+This template is designed to help you launch a waitlist system without incurring costs during the initial stages of your project:
 
-A modern, responsive waitlist signup page built with React and pure CSS for collecting emails and user information.
+- **Free Hosting with GitHub Pages** : Deploy your waitlist page directly from your GitHub repository—no hosting fees required.
+- **BlueFox Email → 3000 Free Credits Monthly for a Year** : Manage your subscriber list with up to 3000 free emails per month for an entire year , making it ideal for small-scale campaigns.
+- **AWS SES Free Tier → 3000 Free Sends Monthly for a Year** : Combine BlueFox Email with AWS SES's free tier to send up to 3000 emails per month for free , ensuring reliable email delivery as your audience grows.
 
+With these resources, you’ll have more than enough capacity to kickstart your waitlist project without spending a dime.
 ![Waitlist Template Screenshot](./src/assets/screenshot.png)
 
 ## Features
