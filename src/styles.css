@@ -120,6 +120,14 @@ body {
   cursor: not-allowed;
 }
 
+/* reCAPTCHA styles */
+.recaptcha-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
 /* Notification styles */
 .toast-container {
   position: fixed;
@@ -225,5 +233,11 @@ body {
   
   .submit-button {
     padding: 0.6rem 0.75rem;
+  }
+  
+  .recaptcha-container iframe {
+    transform: scale(0.85);
+    transform-origin: center;
+    margin-left: -22px;
   }
 }

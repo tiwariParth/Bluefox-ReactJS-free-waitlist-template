@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import BluefoxLogo from './assets/logo-glowing.png'
+import { useState, useRef } from 'react'
+import ReCAPTCHA from 'react-google-recaptcha'
+import BluefoxLogo from './assets/bluefox-logo.svg'
 
 export default function App() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ export default function App() {
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
   const [notification, setNotification] = useState(null)
+  const [captchaToken, setCaptchaToken] = useState(null)
+  const recaptchaRef = useRef(null)
   
   const validateForm = () => {
     const newErrors = {}
@@ -25,8 +28,24 @@ export default function App() {
       newErrors.email = 'Email is invalid'
     }
     
+    if (!captchaToken) {
+      newErrors.recaptcha = 'Please verify you are not a robot'
+    }
+    
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
+  }
+  
+  const handleCaptchaChange = (token) => {
+    setCaptchaToken(token)
+    // Clear recaptcha error if it exists
+    if (errors.recaptcha) {
+      setErrors(prev => {
+        const newErrors = {...prev}
+        delete newErrors.recaptcha
+        return newErrors
+      })
+    }
   }
   
   const handleChange = (e) => {
@@ -81,7 +100,8 @@ export default function App() {
           name: formData.name,
           custom_fields: {
             reason: formData.reason || 'Not specified'
-          }
+          },
+          recaptcha_token: captchaToken
         })
       })
       
@@ -99,6 +119,12 @@ export default function App() {
         email: '',
         reason: ''
       })
+      
+      // Reset reCAPTCHA
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset()
+        setCaptchaToken(null)
+      }
     } catch (error) {
       console.error('Submission error:', error)
       showNotification('error', error.message || 'Failed to join waitlist. Please try again.')
@@ -160,6 +186,15 @@ export default function App() {
               value={formData.reason}
               onChange={handleChange}
             />
+          </div>
+          
+          <div className="form-group recaptcha-container">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
+              onChange={handleCaptchaChange}
+            />
+            {errors.recaptcha && <p className="error-text">{errors.recaptcha}</p>}
           </div>
           
           <button 

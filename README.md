@@ -13,6 +13,7 @@ This template is designed to help you launch a waitlist system without incurring
 - **Responsive Layout**: Fully optimized for all devices from mobile to desktop
 - **Form Validation**: Client-side validation for email and required fields
 - **BlueFox Email Integration**: Direct API integration with BlueFox Email for subscriber management
+- **Google reCAPTCHA**: Protection against spam and bot submissions
 - **Toast Notifications**: Animated success/error notifications with progress bars
 - **GitHub Pages Ready**: Configured for seamless deployment to GitHub Pages
 
@@ -47,11 +48,14 @@ View the live demo: [https://tiwariparth.github.io/Bluefox-ReactJS-free-waitlist
    pnpm install
    ```
 
-3. Create a `.env` file in the root directory with your BlueFox Email API credentials:
+3. Create a `.env` file in the root directory with your API credentials:
    ```
    VITE_SUBLIST_ID=your_subscriber_list_id
    VITE_BLUEFOX_AUTH=your_bluefox_api_key
+   VITE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
    ```
+
+   > Note: To obtain a reCAPTCHA site key, visit [Google reCAPTCHA Admin](https://www.google.com/recaptcha/admin) and register your site.
 
 4. Start the development server:
    ```bash
