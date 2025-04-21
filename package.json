@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://tiwariParth.github.io/waitlist-example",
+  "homepage": "https://tiwariparth.github.io/Bluefox-ReactJS-free-waitlist-template",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
