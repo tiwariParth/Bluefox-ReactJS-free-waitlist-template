@@ -70,20 +70,19 @@ The build files will be in the `dist` directory.
 This project is configured for automatic deployment to GitHub Pages using GitHub Actions. When you push changes to the `main` branch, the GitHub Actions workflow will:
 
 1. Build the project
-2. Deploy it to the `gh-pages` branch
-3. GitHub Pages will serve the site from this branch
+2. Deploy it directly to GitHub Pages
 
-### Manual Deployment
+The deployment workflow is defined in `.github/workflows/deploy.yml`.
 
-You can also deploy manually using:
+### GitHub Pages Setup
 
-```bash
-pnpm deploy
-```
+1. Go to your repository settings
+2. Navigate to "Pages" section
+3. Set the source to "GitHub Actions"
 
-This will build the project and push it to the `gh-pages` branch.
+No additional commands or branches are needed for deployment - just push to main!
 
-## Configuration
+### Configuration
 
 ### Environment Variables
 
