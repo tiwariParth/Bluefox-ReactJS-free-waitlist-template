@@ -94,8 +94,7 @@ export default function App() {
       const response = await fetch(`${sublistURL}`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${authToken}`
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           email: formData.email,
