@@ -18,7 +18,7 @@ The BlueFox Email React Waitlist Template is a complete, production-ready soluti
 - **Free Email Management**: BlueFox Email provides 3000 free credits monthly for a year
 - **Seamless Email Delivery**: Compatible with AWS SES free tier (3000 emails/month for a year)
 
-![Waitlist Template Screenshot](./src/assets/bluefox-logo.png)
+<img src="./src/assets/bluefox-logo.png" alt="Waitlist Template Screenshot" width="100" />
 
 ## Features
 
