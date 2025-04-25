@@ -60,7 +60,7 @@ VITE_BLUEFOX_AUTH=your_bluefox_api_key
 
 *For Captcha* go to [Forms and Pages Tab](https://app.bluefox.email/accounts/default-demo/design-systems/67fcf6afda07577ccf8ed13c/projects/67fcf6efda07577ccf8ed375/forms/67fcf6efda07577ccf8ed377#signupFormEditor) and enable the `Use Captcha` option. 
 
-![BlueFox Email Enable captcha](image-2.png)
+![BlueFox Email Enable captcha](Untitled.png)
 
 ## Installation
 
