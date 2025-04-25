@@ -78,7 +78,7 @@ VITE_BLUEFOX_AUTH=your_bluefox_api_key
 
 3. Start the development server:
    ```bash
-   pnpm dev
+   pnpm run dev
    ```
 
 4. Open your browser and navigate to the local development URL shown in your terminal.
@@ -100,14 +100,6 @@ The project is set up with the correct base path and homepage URL in:
 - `package.json` - containing `"homepage": "https://tiwariparth.github.io/Bluefox-ReactJS-free-waitlist-template"`
 
 ## Customization
-
-### Styling
-
-All styling is handled in `src/styles.css`. The CSS includes:
-- Custom colors and gradients
-- Form styling
-- Animations and transitions
-- Responsive breakpoints
 
 ### Form Fields
 
