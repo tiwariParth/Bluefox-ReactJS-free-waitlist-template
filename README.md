@@ -1,11 +1,24 @@
 # BlueFox Email React Waitlist Template
-This template is designed to help you launch a waitlist system without incurring costs during the initial stages of your project:
 
-- **Free Hosting with GitHub Pages** : Deploy your waitlist page directly from your GitHub repository no hosting fees required.
-- **BlueFox Email → 3000 Free Credits Monthly for a Year** : Manage your subscriber list with up to 3000 free emails per month for an entire year , making it ideal for small-scale campaigns.
-- **AWS SES Free Tier → 3000 Free Sends Monthly for a Year** : Combine BlueFox Email with AWS SES's free tier to send up to 3000 emails per month for free , ensuring reliable email delivery as your audience grows.
+## Overview
 
-![Waitlist Template Screenshot](./src/assets/logo-glowning.png)
+The BlueFox Email React Waitlist Template is a complete, production-ready solution for launching a waitlist for your upcoming product or service. This template solves the common challenge of collecting and managing early-access user sign-ups without expensive infrastructure or complicated setups.
+
+### Why Use This Template?
+
+- **Zero Infrastructure Cost**: Deploy to GitHub Pages for free hosting
+- **Professional Design**: Polished UI that looks great on all devices
+- **Spam Protection**: Built-in BlueFox CAPTCHA to prevent bot submissions
+- **Easy Integration**: Pre-built connection to BlueFox Email's API
+- **Developer Experience**: Built with React 19 and Vite for modern development
+
+### Cost Benefits
+
+- **Free Hosting**: GitHub Pages hosts your waitlist page at no cost
+- **Free Email Management**: BlueFox Email provides 3000 free credits monthly for a year
+- **Seamless Email Delivery**: Compatible with AWS SES free tier (3000 emails/month for a year)
+
+![Waitlist Template Screenshot](./src/assets/bluefox-logo.png)
 
 ## Features
 
@@ -13,29 +26,43 @@ This template is designed to help you launch a waitlist system without incurring
 - **Responsive Layout**: Fully optimized for all devices from mobile to desktop
 - **Form Validation**: Client-side validation for email and required fields
 - **BlueFox Email Integration**: Direct API integration with BlueFox Email for subscriber management
-- **Google reCAPTCHA**: Protection against spam and bot submissions
+- **BlueFox CAPTCHA**: Built-in CAPTCHA system from BlueFox to protect against spam submissions
 - **Toast Notifications**: Animated success/error notifications with progress bars
 - **GitHub Pages Ready**: Configured for seamless deployment to GitHub Pages
+- **TailwindCSS**: Styled with Tailwind for easy customization
 
 ## Demo
 
-View the live demo: [https://tiwariparth.github.io/Bluefox-ReactJS-free-waitlist-template/](https://tiwariparth.github.io/Bluefox-ReactJS-free-waitlist-template/)
+See it in action: [Live Demo](https://tiwariparth.github.io/Bluefox-ReactJS-free-waitlist-template/)
 
-## Tech Stack
+![Live URL](image.png)
 
-- [React 19](https://react.dev/) - Frontend library
-- [Vite](https://vitejs.dev/) - Build tool and development server
-- [Pure CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) - Custom styling without frameworks
-- [BlueFox Email API](https://bluefoxemail.com/) - Email subscriber management
+![BlueFox Email Dashboard](image-1.png)
 
-## Getting Started
+## Prerequisites
 
-### Prerequisites
+Before you start, make sure you have:
 
-- Node.js 18+
-- pnpm (recommended) or npm/yarn
+- **Node.js**: Version 18 or higher
+- **Package Manager**: PNPM (recommended), NPM, or Yarn
+- **BlueFox Email Account**: For API credentials (free tier available)
+- **Git**: For cloning the repository
 
-### Installation
+## Environment Variables
+
+Create a `.env` file in the root of the project with the following variables:
+```
+VITE_BLUEFOX_SUBLIST_URL=your_subscriber_list_url
+VITE_BLUEFOX_AUTH=your_bluefox_api_key
+```
+
+> Note: To obtain subscriberlist URL with id Check out [here](https://bluefox.email/docs/api/subscriber-list-management)
+
+*For Captcha* go to [Forms and Pages Tab](https://app.bluefox.email/accounts/default-demo/design-systems/67fcf6afda07577ccf8ed13c/projects/67fcf6efda07577ccf8ed375/forms/67fcf6efda07577ccf8ed377#signupFormEditor) and enable the `Use Captcha` option. 
+
+![BlueFox Email Enable captcha](image-2.png)
+
+## Installation
 
 1. Clone the repository:
    ```bash
@@ -45,24 +72,16 @@ View the live demo: [https://tiwariparth.github.io/Bluefox-ReactJS-free-waitlist
 
 2. Install dependencies:
    ```bash
+   npm -g install pnpm
    pnpm install
    ```
 
-3. Create a `.env` file in the root directory with your API credentials:
-   ```
-   VITE_SUBLIST_ID=your_subscriber_list_id
-   VITE_BLUEFOX_AUTH=your_bluefox_api_key
-   VITE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
-   ```
-
-   > Note: To obtain a reCAPTCHA site key, visit [Google reCAPTCHA Admin](https://www.google.com/recaptcha/admin) and register your site.
-
-4. Start the development server:
+3. Start the development server:
    ```bash
    pnpm dev
    ```
 
-5. Open your browser and navigate to the local development URL shown in your terminal.
+4. Open your browser and navigate to the local development URL shown in your terminal.
 
 ## Deployment
 
