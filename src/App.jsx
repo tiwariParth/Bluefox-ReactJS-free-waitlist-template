@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import BluefoxLogo from './assets/bluefox-logo.png'
+import { useState, useEffect } from 'react';
+import BluefoxLogo from './assets/bluefox-logo.png';
 
 export default function App() {
   const [formData, setFormData] = useState({
@@ -7,186 +7,178 @@ export default function App() {
     email: '',
     reason: '',
     captchaText: ''
-  })
-  
-  const [errors, setErrors] = useState({})
-  const [loading, setLoading] = useState(false)
-  const [notification, setNotification] = useState(null)
-  const [captchaProbe, setCaptchaProbe] = useState('')
-  const [captchaHtml, setCaptchaHtml] = useState('')
-  
+  });
+
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [notification, setNotification] = useState(null);
+  const [captchaProbe, setCaptchaProbe] = useState('');
+  const [captchaHtml, setCaptchaHtml] = useState('');
+
   useEffect(() => {
-    generateCaptcha()
-  }, [])
-  
+    generateCaptcha();
+  }, []);
+
   const generateCaptcha = () => {
-    fetch("https://api.bluefox.email/v1/captcha")
-      .then(response => response.json()) 
-      .then(captchaData => {
-        setCaptchaHtml(captchaData.result.data)
-        setCaptchaProbe(captchaData.result.probe)
+    fetch('https://api.bluefox.email/v1/captcha')
+      .then((response) => response.json())
+      .then((captchaData) => {
+        setCaptchaHtml(captchaData.result.data);
+        setCaptchaProbe(captchaData.result.probe);
       })
-      .catch(error => {
-        console.error("Error fetching CAPTCHA:", error)
-        setCaptchaHtml(`<p>Error loading captcha: ${error.message}</p>`)
-      })
-  }
-  
+      .catch((error) => {
+        console.error('Error fetching CAPTCHA:', error);
+        setCaptchaHtml(`<p>Error loading captcha: ${error.message}</p>`);
+      });
+  };
+
   const validateForm = () => {
-    const newErrors = {}
-    
+    const newErrors = {};
+
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required'
+      newErrors.name = 'Name is required';
     }
-    
+
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required'
+      newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid'
+      newErrors.email = 'Email is invalid';
     }
-    
+
     if (!formData.captchaText.trim()) {
-      newErrors.captcha = 'Please enter the captcha text'
+      newErrors.captcha = 'Please enter the captcha text';
     }
-    
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
-  
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
+    const { name, value } = e.target;
+    setFormData((prev) => ({
       ...prev,
       [name]: value
-    }))
-    
-    // Clear error when user types
+    }));
+
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
         [name]: ''
-      }))
+      }));
     }
-  }
-  
+  };
+
   const showNotification = (type, message) => {
-    setNotification({ type, message })
-    
-    // Auto-dismiss after 5 seconds
+    setNotification({ type, message });
+
     setTimeout(() => {
-      setNotification(null)
-    }, 5000)
-  }
-  
+      setNotification(null);
+    }, 5000);
+  };
+
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    
-    if (!validateForm()) return
-    
-    setLoading(true)
-    
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    setLoading(true);
+
     try {
-      const sublistId = import.meta.env.VITE_SUBLIST_ID
-      const authToken = import.meta.env.VITE_BLUEFOX_AUTH
-      
-      if (!sublistId || !authToken) {
-        throw new Error('Missing API credentials. Please check your .env file.')
+      const sublistURL = import.meta.env.VITE_BLUEFOX_SUBLIST_URL;
+      const authToken = import.meta.env.VITE_BLUEFOX_AUTH;
+
+      if (!sublistURL || !authToken) {
+        throw new Error('Missing API credentials. Please check your .env file.');
       }
-      
-      const response = await fetch('https://api.bluefoxemail.com/v1/subscribe', {
+
+      const response = await fetch(`${sublistURL}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`
+          Authorization: `Bearer ${authToken}`
         },
         body: JSON.stringify({
-          sublist_id: sublistId,
           email: formData.email,
           name: formData.name,
-          custom_fields: {
-            reason: formData.reason || 'Not specified'
-          },
+          reason: formData.reason || 'Not specified',
           captchaText: formData.captchaText,
           captchaProbe: captchaProbe
         })
-      })
-      
-      const data = await response.json()
-      
+      });
+
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error(data.message || 'Something went wrong')
+        throw new Error(data.message || 'Something went wrong');
       }
-      
-      showNotification('success', 'Thank you for joining our waitlist!')
-      
-      // Reset form
+
+      showNotification('success', 'Thank you for joining our waitlist!');
+
       setFormData({
         name: '',
         email: '',
         reason: '',
         captchaText: ''
-      })
-      
-      // Generate new captcha
-      generateCaptcha()
+      });
+
+      generateCaptcha();
     } catch (error) {
-      console.error('Submission error:', error)
-      showNotification('error', error.message || 'Failed to join waitlist. Please try again.')
-      // Generate new captcha on error
-      generateCaptcha()
+      console.error('Submission error:', error);
+      showNotification('error', error.message || 'Failed to join waitlist. Please try again.');
+      generateCaptcha();
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
-  
+  };
+
   return (
-    <div className="container">
-      <header className="header">
-        <img src={BluefoxLogo} alt="BlueFox Logo" className="logo" />
-        <h1 className="header-title">
-          Join Our <span className="gradient-text">Waitlist</span>
+    <div className="w-full max-w-[1200px] mx-auto px-4 py-8">
+      <header className="text-center mb-8">
+        <img src={BluefoxLogo} alt="BlueFox Logo" className="h-20 mb-4 mx-auto block" />
+        <h1 className="text-4xl font-extrabold mb-4">
+          Join Our <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Waitlist</span>
         </h1>
-        <p className="header-subtitle">
+        <p className="text-lg text-gray-400 max-w-[600px] mx-auto">
           Be the first to know when we launch our new product. Sign up below to secure your spot.
         </p>
       </header>
       
-      <div className="form-container">
+      <div className="max-w-[500px] mx-auto p-8 bg-gray-800 rounded-lg shadow-lg">
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="name" className="form-label">Name</label>
+          <div className="mb-6">
+            <label htmlFor="name" className="block mb-2 font-medium text-gray-300">Name</label>
             <input
               type="text"
               id="name"
               name="name"
-              className="form-input"
+              className="w-full p-3 border border-gray-700 bg-gray-900 text-white rounded-md focus:outline-none focus:border-purple-700 focus:ring-1 focus:ring-purple-700 placeholder-gray-500"
               placeholder="Enter your name"
               value={formData.name}
               onChange={handleChange}
             />
-            {errors.name && <p className="error-text">{errors.name}</p>}
+            {errors.name && <p className="text-red-500 text-sm mt-2">{errors.name}</p>}
           </div>
           
-          <div className="form-group">
-            <label htmlFor="email" className="form-label">Email</label>
+          <div className="mb-6">
+            <label htmlFor="email" className="block mb-2 font-medium text-gray-300">Email</label>
             <input
               type="email"
               id="email"
               name="email"
-              className="form-input"
+              className="w-full p-3 border border-gray-700 bg-gray-900 text-white rounded-md focus:outline-none focus:border-purple-700 focus:ring-1 focus:ring-purple-700 placeholder-gray-500"
               placeholder="Enter your email"
               value={formData.email}
               onChange={handleChange}
             />
-            {errors.email && <p className="error-text">{errors.email}</p>}
+            {errors.email && <p className="text-red-500 text-sm mt-2">{errors.email}</p>}
           </div>
           
-          <div className="form-group">
-            <label htmlFor="reason" className="form-label">Why are you interested? (Optional)</label>
+          <div className="mb-6">
+            <label htmlFor="reason" className="block mb-2 font-medium text-gray-300">Why are you interested? (Optional)</label>
             <textarea
               id="reason"
               name="reason"
-              className="form-input"
+              className="w-full p-3 border border-gray-700 bg-gray-900 text-white rounded-md focus:outline-none focus:border-purple-700 focus:ring-1 focus:ring-purple-700 placeholder-gray-500"
               rows="3"
               placeholder="Tell us why you're interested"
               value={formData.reason}
@@ -194,13 +186,15 @@ export default function App() {
             />
           </div>
           
-          <div className="form-group captcha-group">
-            <label className="form-label">Verify you're human</label>
-            <div className="captcha-container">
-              <div className="captcha-display" dangerouslySetInnerHTML={{ __html: captchaHtml }}></div>
+          <div className="mb-6">
+            <label className="block mb-2 font-medium text-gray-300">Verify you're human</label>
+            <div className="flex items-center bg-white border border-gray-700 rounded-md p-2 mb-2.5 min-h-[60px]">
+              <div className="flex-1 flex justify-center items-center text-black mr-2.5 overflow-hidden" 
+                   dangerouslySetInnerHTML={{ __html: captchaHtml }}>
+              </div>
               <button 
                 type="button" 
-                className="refresh-captcha" 
+                className="flex items-center justify-center bg-transparent border-none text-gray-600 cursor-pointer p-1.5 rounded hover:bg-gray-100 transition-colors"
                 onClick={generateCaptcha}
                 aria-label="Refresh captcha"
               >
@@ -213,17 +207,17 @@ export default function App() {
               type="text"
               id="captchaText"
               name="captchaText"
-              className="form-input"
+              className="w-full p-3 border border-gray-700 bg-gray-900 text-white rounded-md focus:outline-none focus:border-purple-700 focus:ring-1 focus:ring-purple-700 placeholder-gray-500"
               placeholder="Enter captcha text"
               value={formData.captchaText}
               onChange={handleChange}
             />
-            {errors.captcha && <p className="error-text">{errors.captcha}</p>}
+            {errors.captcha && <p className="text-red-500 text-sm mt-2">{errors.captcha}</p>}
           </div>
           
           <button 
             type="submit" 
-            className="submit-button"
+            className="w-full py-3 px-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-md hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
             disabled={loading}
           >
             {loading ? 'Submitting...' : 'Join Waitlist'}
@@ -232,13 +226,17 @@ export default function App() {
       </div>
       
       {notification && (
-        <div className="toast-container">
-          <div className={`toast toast-${notification.type}`}>
+        <div className="fixed top-4 right-4 z-50">
+          <div className={`p-4 rounded-md shadow-md min-w-[300px] max-w-[400px] animate-[fadeIn_0.5s_ease-out] ${
+            notification.type === 'success' 
+              ? 'bg-green-800 text-green-100' 
+              : 'bg-red-800 text-red-100'
+          }`}>
             <div>{notification.message}</div>
-            <div className="progress-bar"></div>
+            <div className="h-1 bg-white/70 rounded-full mt-2 w-full origin-left animate-shrink"></div>
           </div>
         </div>
       )}
     </div>
-  )
+  );
 }
