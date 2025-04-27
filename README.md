@@ -40,12 +40,16 @@ See it in action: [Live Demo](https://tiwariparth.github.io/Bluefox-ReactJS-free
 ![BlueFox Email Dashboard](image-1.png)
 
 ## Prerequisites
+- **BlueFox Email Account**: For credentials (free tier available). Sign Up [here](https://app.bluefox.email/accounts/create-account)
+- **Whitelist your domain**: We need a verified domain to send emails check out [docs](https://bluefox.email/docs/projects/contacts#sign-up-page)
+- **API Credentials**: If you plan to use a backend get your API key from [here](https://bluefox.email/docs/api/#the-bluefox-email-api)
+>Note: We strongly suggest that you should not use API credentials in frontend due to security reasons
 
-Before you start, make sure you have:
+- **Subscriber list URL ID**: Copy your subscriber list [URL](https://bluefox.email/docs/api/subscriber-list-management#subscribe)
 
+Make sure you have:
 - **Node.js**: Version 18 or higher
 - **Package Manager**: PNPM (recommended), NPM, or Yarn
-- **BlueFox Email Account**: For API credentials (free tier available)
 - **Git**: For cloning the repository
 
 ## Environment Variables
