@@ -46,6 +46,8 @@ jobs:
         run: pnpm install
       - name: Build
         run: pnpm run build
+        env:
+          VITE_BLUEFOX_SUBLIST_URL: ${{ secrets.VITE_BLUEFOX_SUBLIST_URL }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
