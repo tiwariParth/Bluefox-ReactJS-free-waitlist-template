@@ -91,7 +91,7 @@ export default function App() {
       //   throw new Error('Missing API credentials. Please check your .env file.');
       // }
 
-      const response = await fetch(`${process.env.VITE_BLUEFOX_SUBLIST_URL}`, {
+      const response = await fetch(`https://api.bluefox.email/v1/subscriber-lists/67fcf6efda07577ccf8ed377`, {
         method: 'POST',
         headers:{
          'Content-Type': 'application/json',
