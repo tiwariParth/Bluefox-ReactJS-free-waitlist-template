@@ -79,23 +79,20 @@ export default function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
+    if (!validateForm()){ return}
 
     setLoading(true);
 
     try {
       const sublistURL = import.meta.env.VITE_BLUEFOX_SUBLIST_URL;
-      const authToken = import.meta.env.VITE_BLUEFOX_AUTH;
+      // const authToken = import.meta.env.VITE_BLUEFOX_AUTH;
 
-      if (!sublistURL || !authToken) {
-        throw new Error('Missing API credentials. Please check your .env file.');
-      }
+      // if (!sublistURL || !authToken) {
+      //   throw new Error('Missing API credentials. Please check your .env file.');
+      // }
 
       const response = await fetch(`${sublistURL}`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
         body: JSON.stringify({
           email: formData.email,
           name: formData.name,
