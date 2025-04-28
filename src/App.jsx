@@ -93,13 +93,16 @@ export default function App() {
 
       const response = await fetch(`${sublistURL}`, {
         method: 'POST',
+        headers:{
+         'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           email: formData.email,
           name: formData.name,
           reason: formData.reason || 'Not specified',
           captchaText: formData.captchaText,
           captchaProbe: captchaProbe
-        })
+        }),
       });
 
       const data = await response.json();
