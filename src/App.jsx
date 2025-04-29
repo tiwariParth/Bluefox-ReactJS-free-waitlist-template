@@ -102,6 +102,11 @@ export default function App() {
       const data = await response.json();
 
       if (!response.ok) {
+        // Check specifically for 401 header missing error
+        if (response.status === 401 && data.error && data.error.message && 
+            data.error.message.includes('header missing')) {
+          throw new Error('Domain not whitelisted. Please contact support.');
+        }
         throw new Error(data.error.message || 'Something went wrong');
       }
 
