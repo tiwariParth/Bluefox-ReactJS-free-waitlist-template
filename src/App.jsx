@@ -79,16 +79,17 @@ export default function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()){ return}
+    if (!validateForm()) { return }
 
     setLoading(true);
 
     try {
       const sublistURL = import.meta.env.VITE_BLUEFOX_SUBLIST_URL;
+
       const response = await fetch(`${sublistURL}`, {
         method: 'POST',
-        headers:{
-         'Content-Type': 'application/json',
+        headers: {
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email: formData.email,
@@ -99,15 +100,22 @@ export default function App() {
         }),
       });
 
+      if (response.status === 401) {
+        const friendlyError = {
+          status: 401,
+          error: {
+            name: "DOMAIN_WHITELIST_ERROR",
+            message: "Domain not whitelisted. Please contact support."
+          }
+        };
+
+        throw new Error(friendlyError.error.message);
+      }
+
       const data = await response.json();
 
       if (!response.ok) {
-        // Check specifically for 401 header missing error
-        if (response.status === 401 && data.error && data.error.message && 
-            data.error.message.includes('header missing')) {
-          throw new Error('Domain not whitelisted. Please contact support.');
-        }
-        throw new Error(data.error.message || 'Something went wrong');
+        throw new Error(data.error?.message || 'Something went wrong');
       }
 
       showNotification('success', 'Thank you for joining our waitlist!');
