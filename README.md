@@ -40,31 +40,42 @@ See it in action: [Live Demo](https://tiwariparth.github.io/Bluefox-ReactJS-free
 ![BlueFox Email Dashboard](image-1.png)
 
 ## Prerequisites
+
 - **BlueFox Email Account**: For credentials (free tier available). Sign Up [here](https://app.bluefox.email/accounts/create-account)
 - **Whitelist your domain**: We need a verified domain to send emails check out [docs](https://bluefox.email/docs/projects/contacts#sign-up-page)
 - **API Credentials**: If you plan to use a backend get your API key from [here](https://bluefox.email/docs/api/#the-bluefox-email-api)
 >Note: We strongly suggest that you should not use API credentials in frontend due to security reasons
 
-- **Subscriber list URL ID**: Copy your subscriber list [URL](https://bluefox.email/docs/api/subscriber-list-management#subscribe)
+- **Subscriber list URL ID**: Copy your [subscriber list URL](https://bluefox.email/docs/api/subscriber-list-management#subscribe)
 
 Make sure you have:
+- **Public Repo**: Make sure to have the repository set to public for github pages.
 - **Node.js**: Version 18 or higher
 - **Package Manager**: PNPM (recommended), NPM, or Yarn
 - **Git**: For cloning the repository
 
 ## Environment Variables
 
-Create a `.env` file in the root of the project with the following variables:
+1. Create a `.env` file in the root of the project with the following variables:
 ```
 VITE_BLUEFOX_SUBLIST_URL=your_subscriber_list_url
-VITE_BLUEFOX_AUTH=your_bluefox_api_key
 ```
-
 > Note: To obtain subscriberlist URL with id Check out [here](https://bluefox.email/docs/api/subscriber-list-management)
 
 *For Captcha* go to [Forms and Pages Tab](https://app.bluefox.email/accounts/default-demo/design-systems/67fcf6afda07577ccf8ed13c/projects/67fcf6efda07577ccf8ed375/forms/67fcf6efda07577ccf8ed377#signupFormEditor) and enable the `Use Captcha` option. 
 
 ![BlueFox Email Enable captcha](Untitled.png)
+
+
+
+2. As we have a CI with github actions which will help setting up github page for you just make sure that you have put same environment variable in [Secrets and Variable](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions) for action to run. 
+
+
+
+> Make sure Github Pages is enabled. Check out the steps [here](https://docs.github.com/en/pages/quickstart)
+
+
+
 
 ## Installation
 
@@ -96,12 +107,6 @@ This project is configured for automatic deployment to GitHub Pages through GitH
 1. Go to your repository settings
 2. Navigate to "Pages" section
 3. Set the source to "GitHub Actions"
-
-### Repository Configuration
-
-The project is set up with the correct base path and homepage URL in:
-- `vite.config.js` - containing `base: '/Bluefox-ReactJS-free-waitlist-template/'`
-- `package.json` - containing `"homepage": "https://tiwariparth.github.io/Bluefox-ReactJS-free-waitlist-template"`
 
 ## Customization
 
