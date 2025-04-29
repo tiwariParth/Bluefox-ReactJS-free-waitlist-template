@@ -46,7 +46,7 @@ See it in action: [Live Demo](https://tiwariparth.github.io/Bluefox-ReactJS-free
 - **API Credentials**: If you plan to use a backend get your API key from [here](https://bluefox.email/docs/api/#the-bluefox-email-api)
 >Note: We strongly suggest that you should not use API credentials in frontend due to security reasons
 
-- **Subscriber list URL ID**: Copy your [subscriber list URL](https://bluefox.email/docs/api/subscriber-list-management#subscribe)
+- **Subscriber list URL ID**: get your subscriber list URL from [here](https://bluefox.email/docs/api/subscriber-list-management#subscribe)
 
 Make sure you have:
 - **Public Repo**: Make sure to have the repository set to public for github pages.
