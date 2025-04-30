@@ -69,16 +69,14 @@ VITE_BLUEFOX_SUBLIST_URL=your_subscriber_list_url
 
 ![BlueFox Email Enable captcha](Untitled.png)
 
+2. As we have a CI with GitHub Actions which will help setting up GitHub Pages for you, make sure that you have added the same environment variable in [Secrets and Variables](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) for the action to run. Follow these steps:
 
+   - Navigate to your repository on GitHub.
+   - Go to "Settings" > "Secrets and variables" > "Actions".
+   - Click "New repository secret".
+   - Add a new secret with the name `VITE_BLUEFOX_SUBLIST_URL` and the value of your subscriber list URL.
 
-2. As we have a CI with github actions which will help setting up github page for you just make sure that you have put same environment variable in [Secrets and Variable](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions) for action to run. 
-
-
-
-> Make sure Github Pages is enabled. Check out the steps [here](https://docs.github.com/en/pages/quickstart)
-
-
-
+> Make sure GitHub Pages is enabled. Check out the steps [here](https://docs.github.com/en/pages/quickstart)
 
 ## Installation
 
@@ -110,6 +108,23 @@ This project is configured for automatic deployment to GitHub Pages through GitH
 1. Go to your repository settings
 2. Navigate to "Pages" section
 3. Set the source to "GitHub Actions"
+
+### Important Configuration Notes
+
+- The `base` path in `vite.config.js` is set to `/Bluefox-ReactJS-free-waitlist-template/`. This ensures all assets are correctly loaded when deployed to GitHub Pages under a project repository.
+- If you're using this template for your own project, you'll need to update this path to match your repository name:
+  ```js
+  base: '/your-repository-name/',
+  ```
+- If you're using a custom domain with GitHub Pages, you can set `base: '/'` instead.
+
+### Using as a Template Repository
+
+This repository is set up as a template repository, which means you can:
+
+1. Click the "Use this template" button at the top of the repository page
+2. Create a new repository based on this template
+3. After creation, remember to update the `base` path in `vite.config.js` to match your new repository name
 
 ## Customization
 
