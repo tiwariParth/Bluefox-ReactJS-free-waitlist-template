@@ -109,10 +109,13 @@ This project is configured for automatic deployment to GitHub Pages through GitH
 2. Navigate to "Pages" section
 3. Set the source to "GitHub Actions"
 4. Ensure your `vite.config.js` has the correct `base` path that matches your repository name:
+
    ```js
    base: '/your-repository-name/',
    ```
+
    This is crucial for assets to load correctly when deployed to GitHub Pages. If you're using a custom domain, you can set `base: '/'` instead.
+
 5. After making any changes to the configuration or environment variables, you'll need to re-run the GitHub Actions workflow:
    - Go to the "Actions" tab in your repository
    - Select the "Deploy to GitHub Pages" workflow
@@ -122,7 +125,7 @@ This manual trigger ensures your latest configuration changes are applied to the
 
 ### Important Configuration Notes
 
-- The `base` path in `vite.config.js` is set to `/Bluefox-ReactJS-free-waitlist-template/` by default. 
+- The `base` path in `vite.config.js` is set to `/Bluefox-ReactJS-free-waitlist-template/` by default please make sure to change the path with your repository name. 
 - When deploying to GitHub Pages under a project repository, this path ensures all assets are loaded correctly.
 
 ## Using as a Template Repository
