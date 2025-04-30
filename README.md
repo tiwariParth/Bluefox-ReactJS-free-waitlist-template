@@ -108,23 +108,37 @@ This project is configured for automatic deployment to GitHub Pages through GitH
 1. Go to your repository settings
 2. Navigate to "Pages" section
 3. Set the source to "GitHub Actions"
+4. Ensure your `vite.config.js` has the correct `base` path that matches your repository name:
+   ```js
+   base: '/your-repository-name/',
+   ```
+   This is crucial for assets to load correctly when deployed to GitHub Pages. If you're using a custom domain, you can set `base: '/'` instead.
+5. After making any changes to the configuration or environment variables, you'll need to re-run the GitHub Actions workflow:
+   - Go to the "Actions" tab in your repository
+   - Select the "Deploy to GitHub Pages" workflow
+   - Click "Run workflow" and select the branch you want to deploy from (usually main)
+
+This manual trigger ensures your latest configuration changes are applied to the deployment.
 
 ### Important Configuration Notes
 
-- The `base` path in `vite.config.js` is set to `/Bluefox-ReactJS-free-waitlist-template/`. This ensures all assets are correctly loaded when deployed to GitHub Pages under a project repository.
-- If you're using this template for your own project, you'll need to update this path to match your repository name:
-  ```js
-  base: '/your-repository-name/',
-  ```
-- If you're using a custom domain with GitHub Pages, you can set `base: '/'` instead.
+- The `base` path in `vite.config.js` is set to `/Bluefox-ReactJS-free-waitlist-template/` by default. 
+- When deploying to GitHub Pages under a project repository, this path ensures all assets are loaded correctly.
 
-### Using as a Template Repository
+## Using as a Template Repository
 
-This repository is set up as a template repository, which means you can:
+This repository is set up as a template repository, which means you can quickly create a new repository with the same files and structure. To use this template:
 
 1. Click the "Use this template" button at the top of the repository page
 2. Create a new repository based on this template
-3. After creation, remember to update the `base` path in `vite.config.js` to match your new repository name
+3. After creation, update the following:
+   - The `base` path in `vite.config.js` to match your new repository name:
+     ```js
+     base: '/your-new-repository-name/',
+     ```
+   - Update environment variables both locally and in GitHub Actions secrets
+
+This saves you time by not having to manually fork and clean up a repository.
 
 ## Customization
 
