@@ -41,6 +41,9 @@ See it in action: [Live Demo](https://tiwariparth.github.io/Bluefox-ReactJS-free
 
 ## Prerequisites
 
+
+### BlueFox Email
+
 - **BlueFox Email Account**: For credentials (free tier available). Sign Up [here](https://app.bluefox.email/accounts/create-account)
 - **Whitelist your domain**: We need a verified domain to send emails check out [docs](https://bluefox.email/docs/projects/contacts#sign-up-page)
 - **API Credentials**: If you plan to use a backend get your API key from [here](https://bluefox.email/docs/api/#the-bluefox-email-api)
