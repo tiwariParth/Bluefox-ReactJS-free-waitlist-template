@@ -206,8 +206,8 @@ export default function App() {
             <div className="mb-6">
               <label htmlFor="reason" className="block mb-2 font-medium text-gray-300">Why are you interested? (Optional)</label>
               <textarea
-                id="reason"
-                name="reason"
+                id="reasonMessage"
+                name="reasonMessage"
                 className="w-full p-3 border border-gray-700 bg-gray-900 text-white rounded-md focus:outline-none focus:border-purple-700 focus:ring-1 focus:ring-purple-700 placeholder-gray-500"
                 rows="3"
                 placeholder="Tell us why you're interested"
