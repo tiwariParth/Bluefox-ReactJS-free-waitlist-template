@@ -123,7 +123,7 @@ export default function App() {
       setFormData({
         name: '',
         email: '',
-        reason: '',
+        reasonMessage: '',
         captchaText: ''
       });
 
