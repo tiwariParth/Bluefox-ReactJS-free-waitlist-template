@@ -5,7 +5,7 @@ export default function App() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    reason: '',
+    reasonMessage: '',
     captchaText: ''
   });
 
@@ -94,7 +94,7 @@ export default function App() {
         body: JSON.stringify({
           email: formData.email,
           name: formData.name,
-          reason: formData.reason || 'Not specified',
+          reasonMessage: formData.reasonMessage || 'Not specified',
           captchaText: formData.captchaText,
           captchaProbe: captchaProbe
         }),
