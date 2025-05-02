@@ -2,9 +2,13 @@
 
 ## Overview
 
-The BlueFox Email React Waitlist Template is a complete, production-ready solution for launching a waitlist for your upcoming product or service. This template solves the common challenge of collecting and managing early-access user sign-ups without expensive infrastructure or complicated setups.
+The BlueFox Email React Waitlist Template  is a complete, production-ready solution I built to help developers and businesses launch a waitlist for their upcoming product or service. As someone who faced challenges while setting up a waitlist for my own project, I wanted to create a tool that simplifies the process without requiring expensive infrastructure or complicated setups. 
+
+This template solves common challenges like email deliverability, spam protection, and seamless integration with BlueFox Email , all while maintaining a modern and responsive design.
 
 ### Why Use This Template?
+
+As a developer, I understand how overwhelming it can be to set up a waitlist from scratch. You need to handle things like DKIM, DMARC, sender reputation, and spam filters things that can distract you from focusing on your core product. That’s why I built this template:
 
 - **Zero Infrastructure Cost**: Deploy to GitHub Pages for free hosting
 - **Professional Design**: Polished UI that looks great on all devices
@@ -47,7 +51,7 @@ See it in action: [Live Demo](https://tiwariparth.github.io/Bluefox-ReactJS-free
 - **BlueFox Email Account**: For credentials (free tier available). Sign Up [here](https://app.bluefox.email/accounts/create-account)
 - **Whitelist your domain**: We need a verified domain to send emails check out [docs](https://bluefox.email/docs/projects/contacts#sign-up-page)
 - **API Credentials**: If you plan to use a backend get your API key from [here](https://bluefox.email/docs/api/#the-bluefox-email-api)
->Note: We strongly suggest that you should not use API credentials in frontend due to security reasons
+>Note: For security reasons, avoid using API credentials in the frontend.
 
 - **Subscriber list URL ID**: get your subscriber list URL from [here](https://bluefox.email/docs/api/subscriber-list-management#subscribe)
 
@@ -69,7 +73,7 @@ VITE_BLUEFOX_SUBLIST_URL=your_subscriber_list_url
 
 ![BlueFox Email Enable captcha](Untitled.png)
 
-2. As we have a CI with GitHub Actions which will help setting up GitHub Pages for you, make sure that you have added the same environment variable in [Secrets and Variables](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) for the action to run. Follow these steps:
+2. Add the same environment variable `VITE_BLUEFOX_SUBLIST_URL` to your GitHub Actions [Secrets and Variables](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) for CI/CD. Follow these steps :
 
    - Navigate to your repository on GitHub.
    - Go to "Settings" > "Secrets and variables" > "Actions".
