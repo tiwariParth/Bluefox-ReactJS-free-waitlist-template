@@ -211,7 +211,7 @@ export default function App() {
                 className="w-full p-3 border border-gray-700 bg-gray-900 text-white rounded-md focus:outline-none focus:border-purple-700 focus:ring-1 focus:ring-purple-700 placeholder-gray-500"
                 rows="3"
                 placeholder="Tell us why you're interested"
-                value={formData.reason}
+                value={formData.reasonMessage}
                 onChange={handleChange}
               />
             </div>
