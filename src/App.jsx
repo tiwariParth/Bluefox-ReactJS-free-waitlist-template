@@ -204,7 +204,7 @@ export default function App() {
             </div>
             
             <div className="mb-6">
-              <label htmlFor="reason" className="block mb-2 font-medium text-gray-300">Why are you interested? (Optional)</label>
+              <label htmlFor="reasonMessage" className="block mb-2 font-medium text-gray-300">Why are you interested? (Optional)</label>
               <textarea
                 id="reasonMessage"
                 name="reasonMessage"
