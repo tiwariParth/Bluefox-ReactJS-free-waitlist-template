@@ -43,8 +43,7 @@ See it in action: [Live Demo](https://tiwariparth.github.io/Bluefox-ReactJS-free
 
 
 ### Screenshots
-
-![LiveURL](https://github.com/user-attachments/assets/bd492790-20f0-4401-8230-641cb220536e)
+![Waitlist](https://github.com/user-attachments/assets/7a034c27-e10e-4767-a1db-e7862565a099)
 <div align="center">
   <strong>Fig: Live deployment of waitlist </strong>
 </div>
