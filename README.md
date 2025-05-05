@@ -8,8 +8,9 @@ This template solves common challenges like email deliverability, spam protectio
 
 ### Why Use This Template?
 
-As a developer, I understand how overwhelming it can be to set up a waitlist from scratch. You need to handle things like DKIM, DMARC, sender reputation, and spam filters things that can distract you from focusing on your core product. That’s why I built this template:
+As a developer, I understand how overwhelming it can be to set up a waitlist from scratch. You need to handle things like deliveriblity, email consistency and the hardest part about it coding HTML emails for every other platform, things that can distract you from focusing on your core product. That’s why I built this template:
 
+- **Amazon SES**: Takes care of your deliveribility issue
 - **Zero Infrastructure Cost**: Deploy to GitHub Pages for free hosting
 - **Professional Design**: Polished UI that looks great on all devices
 - **Spam Protection**: Built-in BlueFox CAPTCHA to prevent bot submissions
@@ -18,6 +19,7 @@ As a developer, I understand how overwhelming it can be to set up a waitlist fro
 
 ### Cost Benefits
 
+- **AWS Free tier**: You can send upto 3000 emails in free tier for a year.
 - **Free Hosting**: GitHub Pages hosts your waitlist page at no cost
 - **Free Email Management**: BlueFox Email provides 3000 free credits monthly for a year
 - **Seamless Email Delivery**: Compatible with AWS SES free tier (3000 emails/month for a year)
@@ -39,9 +41,18 @@ As a developer, I understand how overwhelming it can be to set up a waitlist fro
 
 See it in action: [Live Demo](https://tiwariparth.github.io/Bluefox-ReactJS-free-waitlist-template/)
 
-![Live URL](image.png)
 
-![BlueFox Email Dashboard](image-1.png)
+### Screenshots
+
+![LiveURL](https://github.com/user-attachments/assets/bd492790-20f0-4401-8230-641cb220536e)
+<div align="center">
+  <strong>Fig: Live deployment of waitlist </strong>
+</div>
+
+![Dashboard](https://github.com/user-attachments/assets/45360cff-36db-49f5-9483-22ae0bc3ccec)
+<div align="center">
+  <strong>Fig: Reflected changes in BlueFox Email's contact page </strong>
+</div>
 
 ## Prerequisites
 
@@ -56,6 +67,7 @@ See it in action: [Live Demo](https://tiwariparth.github.io/Bluefox-ReactJS-free
 - **Subscriber list URL ID**: get your subscriber list URL from [here](https://bluefox.email/docs/api/subscriber-list-management#subscribe)
 
 Make sure you have:
+- **Amazon SES Configured Account**: Checkout this [tutorial](https://bluefox.email/posts/how-to-set-up-aws-ses) to setup Amazon SES
 - **Public Repo**: Make sure to have the repository set to public for github pages.
 - **Node.js**: Version 18 or higher
 - **Package Manager**: PNPM (recommended), NPM, or Yarn
@@ -140,6 +152,7 @@ This repository is set up as a template repository, which means you can quickly 
 2. Create a new repository based on this template
 3. After creation, update the following:
    - The `base` path in `vite.config.js` to match your new repository name:
+     
      ```js
      base: '/your-new-repository-name/',
      ```
