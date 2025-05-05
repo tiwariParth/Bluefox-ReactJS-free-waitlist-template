@@ -49,7 +49,7 @@ See it in action: [Live Demo](https://tiwariparth.github.io/Bluefox-ReactJS-free
   <strong>Fig: Live deployment of waitlist </strong>
 </div>
 
-![Dashboard](https://github.com/user-attachments/assets/45360cff-36db-49f5-9483-22ae0bc3ccec)
+![Dashboard](https://github.com/user-attachments/assets/bf78f5ab-931e-4842-ac6b-dda8b33d225e)
 <div align="center">
   <strong>Fig: Reflected changes in BlueFox Email's contact page </strong>
 </div>
