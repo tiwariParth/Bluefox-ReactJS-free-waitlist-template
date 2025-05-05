@@ -43,12 +43,14 @@ See it in action: [Live Demo](https://tiwariparth.github.io/Bluefox-ReactJS-free
 
 
 ### Screenshots
-![Waitlist](https://github.com/user-attachments/assets/7a034c27-e10e-4767-a1db-e7862565a099)
+![Waitlist](https://github.com/user-attachments/assets/586a7a80-9c1e-4ade-97d5-6ce77acc2000)
 <div align="center">
   <strong>Fig: Live deployment of waitlist </strong>
 </div>
 
-![Dashboard](https://github.com/user-attachments/assets/bf78f5ab-931e-4842-ac6b-dda8b33d225e)
+
+![Dashboard](https://github.com/user-attachments/assets/5a994a4a-518b-4851-8b0e-83bfa87e40a6)
+
 <div align="center">
   <strong>Fig: Reflected changes in BlueFox Email's contact page </strong>
 </div>
