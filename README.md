@@ -166,10 +166,6 @@ This saves you time by not having to manually fork and clean up a repository.
 
 You can customize the form fields by modifying the state and JSX in `src/App.jsx`.
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Credits
 
 - Created by [Parth Tiwari](https://github.com/tiwariParth)
