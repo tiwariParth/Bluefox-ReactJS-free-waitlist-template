@@ -61,11 +61,10 @@ See it in action: [Live Demo](https://tiwariparth.github.io/Bluefox-ReactJS-free
 ### BlueFox Email
 
 - **BlueFox Email Account**: For credentials (free tier available). Sign Up [here](https://app.bluefox.email/accounts/create-account)
-- **Whitelist your domain**: We need a verified domain to send emails check out [docs](https://bluefox.email/docs/projects/contacts#sign-up-page)
-- **API Credentials**: If you plan to use a backend get your API key from [here](https://bluefox.email/docs/api/#the-bluefox-email-api)
+- **Whitelist your domain**: We need a verified domain to send emails check out [docs](https://bluefox.email/docs/projects/settings#domain-whitelist)
+- **BlueFox Subscriber List URL**: Get your's from [here](https://bluefox.email/docs/api/subscriber-list-management#subscribe)
+- **API Credentials(OPTIONAL)**: If you are planning to use backend, get your API keys from [here](https://bluefox.email/docs/projects/settings#api-keys)
 >Note: For security reasons, avoid using API credentials in the frontend.
-
-- **Subscriber list URL ID**: get your subscriber list URL from [here](https://bluefox.email/docs/api/subscriber-list-management#subscribe)
 
 Make sure you have:
 - **Amazon SES Configured Account**: Checkout this [tutorial](https://bluefox.email/posts/how-to-set-up-aws-ses) to setup Amazon SES
@@ -82,7 +81,7 @@ VITE_BLUEFOX_SUBLIST_URL=your_subscriber_list_url
 ```
 > Note: To obtain subscriberlist URL with id Check out [here](https://bluefox.email/docs/api/subscriber-list-management)
 
-*For Captcha* go to [Forms and Pages Tab](https://app.bluefox.email/accounts/default-demo/design-systems/67fcf6afda07577ccf8ed13c/projects/67fcf6efda07577ccf8ed375/forms/67fcf6efda07577ccf8ed377#signupFormEditor) and enable the `Use Captcha` option. 
+*For Captcha* go to [Forms and Pages Tab](https://bluefox.email/docs/projects/forms-and-pages#signup-page) and enable the `Use Captcha` option. 
 
 ![BlueFox Email Enable captcha](Untitled.png)
 
@@ -132,6 +131,8 @@ This project is configured for automatic deployment to GitHub Pages through GitH
    ```
 
    This is crucial for assets to load correctly when deployed to GitHub Pages. If you're using a custom domain, you can set `base: '/'` instead.
+
+> NOTE: Make sure that you have added `VITE_BLUEFOX_SUBLIST_URL` environment variables to your secrets and variables in Action tab.
 
 5. After making any changes to the configuration or environment variables, you'll need to re-run the GitHub Actions workflow:
    - Go to the "Actions" tab in your repository
