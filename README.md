@@ -24,8 +24,6 @@ As a developer, I understand how overwhelming it can be to set up a waitlist fro
 - **Free Email Management**: BlueFox Email provides 3000 free credits monthly for a year
 - **Seamless Email Delivery**: Compatible with AWS SES free tier (3000 emails/month for a year)
 
-<img src="./src/assets/bluefox-logo.png" alt="Waitlist Template Screenshot" width="100" />
-
 ## Features
 
 - **Modern Design**: Clean, dark-themed UI with gradient accents and smooth animations
