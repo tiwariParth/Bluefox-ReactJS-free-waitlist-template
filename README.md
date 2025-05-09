@@ -41,7 +41,8 @@ See it in action: [Live Demo](https://tiwariparth.github.io/Bluefox-ReactJS-free
 
 
 ### Screenshots
-![Waitlist](https://github.com/user-attachments/assets/586a7a80-9c1e-4ade-97d5-6ce77acc2000)
+![Waitlist](https://github.com/user-attachments/assets/c80256da-aab2-4a2b-b21f-fcb06330d055)
+
 <div align="center">
   <strong>Fig: Live deployment of waitlist </strong>
 </div>
