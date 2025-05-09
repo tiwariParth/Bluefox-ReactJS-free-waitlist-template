@@ -162,16 +162,18 @@ export default function App() {
         `}
       </style>
       
-      <div className="w-full max-w-[1200px] mx-auto px-4 py-8">
-        <header className="text-center mb-8">
-          <img src={BluefoxLogo} alt="BlueFox Logo" className="h-20 mb-4 mx-auto block" />
-          <h1 className="text-4xl font-extrabold mb-4">
-            Join Our <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Waitlist</span>
-          </h1>
-          <p className="text-lg text-gray-400 max-w-[600px] mx-auto">
-            Be the first to know when we launch our new product. Sign up below to secure your spot.
-          </p>
-        </header>
+     <div className="w-full max-w-[1200px] mx-auto px-4 py-8">
+  <header className="text-center mb-8">
+    <div className="w-20 h-20 rounded-full bg-gray-300 text-white flex items-center justify-center mx-auto mb-4">
+      <span className="text-xl font-bold">Your Logo</span>
+    </div>
+    <h1 className="text-4xl font-extrabold mb-4">
+      Join Our <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Waitlist</span>
+    </h1>
+    <p className="text-lg text-gray-400 max-w-[600px] mx-auto">
+      Be the first to know when we launch our new product. Sign up below to secure your spot.
+    </p>
+  </header>
         
         <div className="max-w-[500px] mx-auto p-8 bg-gray-800 rounded-lg shadow-lg">
           <form onSubmit={handleSubmit}>
