@@ -263,6 +263,8 @@ export default function App() {
                   ? 'bg-green-800 text-green-100' 
                   : 'bg-red-800 text-red-100'
               }`}
+                role="alert"
+                aria-live="assertive"
             >
               <div className="font-medium">{notification.message}</div>
               <div className="h-1 bg-white/30 rounded-full mt-2 w-full overflow-hidden">
